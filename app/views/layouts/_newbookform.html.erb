@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-2 col-xs-offset-5">
+    <div class="well">
+      <div class="row">
+        <%= form_for @book do |b| %>
+            <%= b.label :title %> <br \>
+            <%= b.text_field :title %> <br \>
+            <%= b.label :author %> <br \>
+            <%= b.text_field :author %> <br \>
+            <%= b.label :about_author %> <br \>
+            <%= b.text_area :about %> <br \>
+            <%= b.label :description %> <br \>
+            <%= b.text_area :description %> <br \>
+            <%= b.label :genre %> <br \>
+            <%= b.text_field :genre %> <br \>
+            <%= b.label :price %> <br \>
+            <%= b.number_field :price %> <br \>
+            <%= b.label :image %> <br \>
+            <%= b.text_field :image %> <br \>
+            <%= b.label :isbn %> <br \>
+            <%= b.number_field :isbn, min: 0000000000, max: 9999999999 %> <br \>
+            <div style="padding:5px;">
+              <%= b.submit :class => "btn btn-primary" %> <br \>
+            </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
