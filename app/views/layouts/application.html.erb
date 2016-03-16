@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FanSite</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h1><%= link_to "Books", root_path %></h1>
+  </div>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
