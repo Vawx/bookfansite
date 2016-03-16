@@ -1,9 +1,15 @@
-<h3><label for="frame" class="label label-default"><%= @book.name %></label></h3>
-<div class="col-xs-3 well">
-  <div class="row">
-    <%= book.description %>
-  </div>
-  <div class="row">
-    <%= book.author %>
+<div class="col-xs-2 col-xs-offset-1">
+  <h3><label for="frame" class="label label-default" style="margin-right:4px;"><%= object.title %>
+    </label><label for="frame" class="label label-info"><% if object.price.class != NilClass %>$<%= object.price %>0<%else %> $0.00 <%end%></label>
+  </h3>
+  <div class="col-xs-12 col-xs-offset-3">
+    <label for="" class="label label-info"><% object.genre %></label>
+    <div class="thumbnail">
+      <img src="<%= object.image %>" alt="">
+    </div>
+    <% for i in 1..object.rating.to_i %>
+      *
+    <%end%>
+    <p>ISBN: <%= object.isbn %></p>
   </div>
 </div>

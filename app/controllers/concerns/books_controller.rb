@@ -8,4 +8,18 @@ class BooksController < ApplicationController
     @book = Book.new
     render :new
   end
+
+  define_method :create do
+    @book = Book.new( book_params )
+    if @book.save
+      redirect_to books_path
+    else
+      render :new
+    end
+  end
+
+  private
+  define_method :book_params do
+    params.require( :book ).permit( :title, :author, :about, :description, :price, :image, :genre, :rating, :isbn )
+  end
 end
