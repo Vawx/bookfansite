@@ -27,6 +27,26 @@ class BooksController < ApplicationController
     end
   end
 
+  define_method :edit do
+    @book = Book.find params[:id]
+    render :edit
+  end
+
+  define_method :update do
+    @book = Book.find params[:id]
+    if @book.update( book_params )
+      redirect_to books_path
+    else
+      render :edit
+    end
+  end
+
+  define_method :destroy do
+    @book = Book.find params[:id]
+    @book.destroy
+    redirect_to books_path
+  end
+
   private
   define_method :book_params do
     params.require( :book ).permit( :title, :author, :about, :description, :price, :image, :genre, :rating, :isbn )
