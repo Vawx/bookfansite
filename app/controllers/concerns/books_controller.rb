@@ -9,6 +9,15 @@ class BooksController < ApplicationController
     render :new
   end
 
+  define_method :show do
+    if params[:id] == 'about'
+      render :about
+    else
+      @book = Book.find params[:id]
+      render :show
+    end
+  end
+
   define_method :create do
     @book = Book.new( book_params )
     if @book.save
