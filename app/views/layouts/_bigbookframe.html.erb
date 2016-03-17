@@ -9,6 +9,7 @@
 <div class="col-xs-8 col-xs-offset-4">
   <h1><%= @book.title %></h1>
   <div class="col-xs-2">
+    <p><b>Created on</b></p><p> <%= time_conversion( @book.created_at ) %></p>
     <img src="<%= @book.image %>" height="256px" alt="">
     <p><b>ISBN10:</b> <%= @book.isbn %></p>
     <% for i in 0..rand( 5) %>
