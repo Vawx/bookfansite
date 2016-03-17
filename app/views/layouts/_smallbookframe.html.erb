@@ -8,7 +8,7 @@
       <%= link_to image_tag(object.image), book_path( object )%>
     </div>
     <% for i in 1..object.rating.to_i %>
-      *
+      <span class="glyphicon glyphicon glyphicon-star" aria-hidden="true"></span>
     <%end%>
     <p>ISBN: <%= object.isbn %></p>
   </div>
