@@ -12,16 +12,19 @@
     <p><b>Created on</b></p><p> <%= time_conversion( @book.created_at ) %></p>
     <img src="<%= @book.image %>" height="256px" alt="">
     <p><b>ISBN10:</b> <%= @book.isbn %></p>
-    <% for i in 0..rand( 5) %>
+    <% for i in 1..@book.rating.to_i%>
         <span class="glyphicon glyphicon glyphicon-star star" aria-hidden="true"></span>
     <%end%>
   </div>
   <div class="col-xs-4">
     <p><%= @book.description.html_safe %></p>
   </div>
-  <div class="col-xs-1">
+  <div class="col-xs-2">
     <p><h3><label class="label label-success">$<%= @book.price %>0</label></h3></p>
     <p><h3><label class="label label-info"><%= @book.genre %></label></h3></p>
+    <% for i in 0..4 %>
+        <%= link_to "", book_path( @book, "rating " + i.to_s ), id: "rating" + i.to_s, class: "glyphicon glyphicon glyphicon-star rateStar", :method => :put %>
+    <%end%>
   </div>
   <div class="col-xs-7"></div>
   <div class="row">

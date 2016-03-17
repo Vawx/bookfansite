@@ -33,11 +33,32 @@ class BooksController < ApplicationController
   end
 
   define_method :update do
-    @book = Book.find params[:id]
-    if @book.update( book_params )
-      redirect_to books_path
+    if params[:format].class != NilClass
+      if params[:format].include? "rating"
+        @book = Book.find params[:id]
+        @rating = @book.ratings.new( { book_id: @book.id, rating: params[:format][params[:format].length - 1].to_i } )
+        if @rating.save
+          current_ratings = @book.ratings.all
+          average_rating = 0
+          current_ratings.each do |r|
+            average_rating += r.rating
+          end
+          average_rating /= current_ratings.length
+          rating = average_rating.round
+          if @book.update_attribute( :rating, rating )
+            redirect_to books_path
+          else
+            render :edit
+          end
+        end
+      end
     else
-      render :edit
+      @book = Book.find params[:id]
+      if @book.update( book_params )
+        redirect_to books_path
+      else
+        render :edit
+      end
     end
   end
 

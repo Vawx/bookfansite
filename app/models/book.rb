@@ -1,5 +1,6 @@
 class Book < ActiveRecord::Base
   has_many :reviews
+  has_many :ratings
   validates :title, presence: true
   validates :author, presence: true
   validates :price, presence: true
